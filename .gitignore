@@ -1,0 +1,41 @@
+# === Rust Core ===
+/target/
+**/target/
+**/*.rs.bk
+
+# === Cargo ===
+/Cargo.lock
+**/Cargo.lock
+
+# === Backups & IDEs ===
+**/*.log
+**/*.tmp
+**/*.swp
+**/*.bak
+**/.DS_Store
+**/Thumbs.db
+
+# === VS Code / JetBrains / other IDEs ===
+.vscode/
+.idea/
+*.iml
+
+# === Node / Yarn if you're mixing tools ===
+node_modules/
+dist/
+build/
+
+# === OS crap ===
+ehthumbs.db
+Icon?
+.DS_Store
+
+# === Tests & Coverage Tools ===
+/coverage/
+/htmlcov/
+/lcov.info
+
+# === Optional: ignore compiled binaries ===
+/bin/
+/debug/
+/release/
