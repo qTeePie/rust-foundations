@@ -35,11 +35,26 @@ fn main() {
 
             Trim removes whitespaces and newline / carriage return.
         */
+
+        if guess.trim().len() > 10 {
+            println!("\n💥 HEY HEY ❗❗ My guy, chill with he digits plz.");
+            check_urself();
+            continue;
+        }
+
         let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
+            Ok(num) => {
+                if num < 1 || num > 100 {
+                    println!("\n⚠️  Only numbers between 1 and 100, bruv!\n");
+                    continue;
+                } else {
+                    num // 🧠 Rust rule: last line w/o semicolon = return value of block
+                }
+            }
             Err(_) => {
+                // _ => catch-all value
                 println!("\nBruv, I need a number 👿 not {}", guess.trim());
-                println!("*** CHECK URSELF ***\n");
+                check_urself();
                 continue;
             } // invalid => next loopieee 🔁
         };
@@ -55,4 +70,9 @@ fn main() {
             }
         }
     }
+}
+
+/* 4 bad girls & boys only */
+fn check_urself() {
+    println!("*** CHECK URSELF ***\n");
 }
