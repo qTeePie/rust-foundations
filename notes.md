@@ -22,6 +22,8 @@ It locks in exact crate versions so your project doesn’t randomly break on som
 ✨ `cargo clean` won’t delete it — this diva doesn’t wipe easily.
 ❗ Never add `Cargo.lock` to `.gitignore` (for binary projects).
 
+When you want to update a crate &rarr; `cargo update`.
+
 #### 🏗️ `target/`
 
 - All compiled output lives here (`target/debug/`, `target/release/`)
@@ -33,3 +35,7 @@ It locks in exact crate versions so your project doesn’t randomly break on som
 ### Docs 📄
 
 - Stadard libraries set / _Prelude_: https://doc.rust-lang.org/stable/std/prelude/index.html
+
+> ❗ **Tip:** You won’t magically know which traits or methods to use in a crate — but that’s what docs are for!
+> Run cargo doc --open to open local docs for all your dependencies in the browser.
+> Wanna explore rand? Just run the command and click rand in the sidebar 💙
