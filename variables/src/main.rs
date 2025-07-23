@@ -20,29 +20,27 @@
 fn main() {
     let x = 5;
 
-    /**
-     * 🌘 Shadowing in Rust:
-     *
-     * Shadowing lets you redeclare a variable with the same name,
-     * creating a new variable and hiding the previous one in the same scope.
-     *
-     * - "The first variable is shadowed by the second."
-     * - Each new shadow has its own memory address.
-     *
-     *  Because shadowing creates a new variable, it can have a different data type than the one it replaces.
-     *  Ex:
-     *      let spaces = "   ";             // string
-     *      let spaces = spaces.len();      // int
-     */
+    // 🌘 Shadowing in Rust:
+    //
+    // Shadowing lets you redeclare a variable with the same name,
+    // creating a new variable and hiding the previous one in the same scope.
+    //
+    // - "The first variable is shadowed by the second."
+    // - Each new shadow has its own memory address.
+    //
+    // Because shadowing creates a new variable, it can have a different data type than the one it replaces.
+    // Ex:
+    //     let spaces = "   ";             // string
+    //     let spaces = spaces.len();      // int
+
     let x = x + 1;
 
     {
-        /**
-         * Inner shadowing block:
-         *
-         * The variable below shadows the previous declaration of `x`,
-         * taking over the name until it is shadowed again or until the scope ends.
-         */
+        // Inner shadowing block:
+        //
+        // The variable below shadows the previous declaration of `x`,
+        // taking over the name until it is shadowed again or until the scope ends.
+
         let x = x * 2;
         println!("The value of x in the inner scope is: {x}");
 
