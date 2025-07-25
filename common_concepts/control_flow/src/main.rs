@@ -17,7 +17,7 @@
     “I’m out 💨 — oh, and here’s the value: 🧾 result;”
 */
 
-fn looper_nested() {
+fn nested_loop_label() {
     let mut count = 0;
 
     // sets loop label
@@ -44,7 +44,37 @@ fn looper_nested() {
     println!("End count = {count}\n End remaining {remaining}");
 }
 
-fn looper() -> i32 {
+fn iterate_array_for() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
+
+fn reverse_countdown_for() {
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
+    println!("Blastoff!");
+}
+
+// rust also has construct for while loop
+fn countdown_while() {
+    let mut count = 3;
+
+    println!("Ready 2 blast.");
+
+    while count != 0 {
+        println!("{count}!");
+
+        count -= 1;
+    }
+
+    println!("Blastoff!");
+}
+
+fn basic_loop() -> i32 {
     // mutable variabøe
     let mut counter = 0;
 
@@ -54,7 +84,7 @@ fn looper() -> i32 {
         if counter == 10 {
             break counter * 2;
         }
-    } // no ; here cause we want the functiont to return this value (attached to break)
+    } // no ; here cause we want the function to return this value (attached to break)
 }
 
 fn let_if(condition: bool) -> i32 {
@@ -67,11 +97,19 @@ fn let_if(condition: bool) -> i32 {
 
 fn main() {
     let result = let_if(true);
-    println!("The value of number is: {result}");
+    println!("The value of number is: {result}\n");
 
     // Shadowing
-    let result = looper();
-    println!("The result from loop is {result}");
+    let result = basic_loop();
+    println!("The result from loop is {result}\n");
 
-    looper_nested();
+    println!("Entering nested loop function 🔁");
+    nested_loop_label();
+    println!();
+
+    println!("Entering blastoff function 🚀 1 / 2");
+    countdown_while();
+
+    println!("Entering blastoff function 🚀 2 / 2");
+    reverse_countdown_for();
 }
