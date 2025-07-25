@@ -1,5 +1,7 @@
 # 🦀 rust-foundations
 
+> ⚠️ This is a practice repo. I’m learning by doing. Code is annotated casually for myself with a lot of silly remarks and emojis. 💅
+
 Welcome to my Rust journey! 🚀 This repo is where I’m learning the core foundations of the Rust programming language by working through [_The Rust Book_](https://doc.rust-lang.org/book/).
 
 ## 📚 Goal
