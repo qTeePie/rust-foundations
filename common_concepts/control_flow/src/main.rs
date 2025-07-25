@@ -9,9 +9,33 @@
 
 
 */
-fn main() {
-    let condition = true;
-    let number = if condition { 5 } else { 6 }; // expression that returns either 5 or 6
 
-    println!("The value of number is: {number}");
+fn looper() -> i32 {
+    // mutable variabøe
+    let mut counter = 0;
+
+    loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    } // no ; here cause we want the functiont to return this value (beak return)
+}
+
+fn let_if(condition: bool) -> i32 {
+    if condition {
+        5
+    } else {
+        6
+    } // expression that returns either 5 or 6
+}
+
+fn main() {
+    let result = letIf(true);
+    println!("The value of number is: {result}");
+
+    // Shadowing
+    let result = looper();
+    println!("The result is {result}");
 }

@@ -1,6 +1,13 @@
 # My _Rust book_ Notes ✨
 
-### Central commands 👑
+### 🔠 Rust Naming rule
+
+functions: snake_case ✅
+variables: snake_case ✅
+types/enums/structs: PascalCase ✅
+constants/statics: SCREAMING_SNAKE_CASE ✅
+
+### 👑 Central commands
 
 - 🆕 Create a new project: `cargo new`
 - 🔨 Build the project: `cargo build`
