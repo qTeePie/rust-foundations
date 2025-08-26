@@ -1,4 +1,4 @@
-/*
+/*-
     - Each value in Rust has an *owner*.
     - There can only be one owner at a time.
     - When the owner goes out of scope, the value will be dropped.
@@ -17,8 +17,75 @@
     When we assign s1 to s2, the **String data** is copied, meaning we copy the pointer, the length, and the capacity that are on the stack.
     **We do not copy the data on the heap that the pointer refers to.**
 
+    ! If we do want to deeply copy the heap data of the String, not just the stack data, we can use a common method called clone
+    Clone is for heap-memory stuff. You don't have to call clone on variables of fixed-size type.
+
     When the owner of a piece of memory, goes out of scope, rust calls a function named *drop*
+
+    **The ownership of a piece of memory follows the same pattern:
+    assigning a value to another variable moves it.**
+
+    When a variable that includes data on the heap goes out of scope, the value will be cleaned up by drop unless ownership of the data has been moved to another variable.
+
 */
+
+fn print_string_struct(label: &str, s: &String) {
+    println!("===============================");
+    println!("📦 String Label: {}", label);
+    println!("🧠 Stack Address of struct (&s): {:p}", s);
+    println!("📍 Heap Pointer (s.as_ptr()):   {:p}", s.as_ptr());
+    println!("📏 Length (s.len()):            {}", s.len());
+    println!("📦 Capacity (s.capacity()):     {}", s.capacity());
+    println!("💬 Contents:                    {}", s);
+    println!("===============================\n");
+}
+
+fn takes_ownership(some_string: String) {
+    // some_string comes into scope
+    println!("{some_string}");
+} // Here, some_string goes out of scope and `drop` is called. The backing
+  // memory is freed.
+
+fn modify_string(s: &mut String) {
+    s.push_str(", world!");
+}
+
+fn gives_ownership() -> String {
+    // gives_ownership will move its
+    // return value into the function
+    // that calls it
+
+    let some_string = String::from("yours"); // some_string comes into scope
+
+    some_string // some_string is returned and
+                // moves out to the calling
+                // function
+}
+
+fn clone_string() {
+    let s1 = String::from("hello");
+    let s2 = s1.clone();
+
+    // 🧠 Get raw pointers to the heap data of each String
+    // They are pointing to different pieces of memory!
+    let ptr1 = s1.as_ptr();
+    let ptr2 = s2.as_ptr();
+
+    println!("s1 = {s1}, s2 = {s2}");
+    println!("s1 pointer = {:p}", ptr1);
+    println!("s2 pointer = {:p}", ptr2);
+
+    // Just to be ✨ extra ✨
+    print_string_struct("s1", &s1);
+    print_string_struct("s2", &s2);
+}
+
+fn assign_new_content() {
+    let mut s = String::from("hello");
+    s = String::from("ahoy"); // byeee "hello", u're free now 🏴‍☠️
+
+    println!("{s}, world!");
+}
 
 fn double_free_error() {
     // **Double free error** is when two variables try to free the same memory.
@@ -44,4 +111,16 @@ fn main() {
         // s not valid (not declared)
         let s = "hello"; // valid from here all the way to...
     } // here. End of scope => s is invalid
+
+    let mut s = String::from("hello");
+
+    modify_string(&mut s); // 🧠 we’re *borrowing* it mutably
+    println!("AFTER: {s}"); // ✅ still valid & changed!
+
+    takes_ownership(s); // 🔥 s is MOVED here
+                        // println!("{s}"); // ❌ COMPILE ERROR: s is now GONE
+
+    let s = gives_ownership(); // yey s is valid again 🚀 we recieved it from gives_ownership() omg... so CUTE
+
+    clone_string();
 }
