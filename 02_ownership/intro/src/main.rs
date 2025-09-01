@@ -14,6 +14,19 @@
     > A String is made up of three parts: a pointer to the memory that holds the contents of the string, a length, and a capacity.
     > This group of data is stored on the stack. The actual string content (where the pointer leads) is stored on the heap.
 
+        Stack:
+    ┌───────────────┐
+    │     s1        │
+    │  ptr →────────┼────┐
+    │  len:    5    │    │
+    │  cap:    5    │    │
+    └───────────────┘    │
+                        ↓
+    Heap:
+    ┌────┬────┬────┬────┬────┐
+    │ h  │ e  │ l  │ l  │ o  │
+    └────┴────┴────┴────┴────┘
+
     When we assign s1 to s2, the **String data** is copied, meaning we copy the pointer, the length, and the capacity that are on the stack.
     **We do not copy the data on the heap that the pointer refers to.**
 
