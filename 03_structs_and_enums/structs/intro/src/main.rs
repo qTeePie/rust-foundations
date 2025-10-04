@@ -87,6 +87,7 @@ impl User {
             }
         );
 
+        // Pattern matching expression → if let PATTERN = VALUE
         if let Some(Color(r, g, b)) = &self.fav_color {
             println!("🎨 Favorite Color: rgb({}, {}, {})", r, g, b);
         } else {
